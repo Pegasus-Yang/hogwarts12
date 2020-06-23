@@ -4,6 +4,11 @@
 """
 import allure
 import pytest
+import sys
+sys.path.append('..')
+from pytest_class.calculator import Calculator
+
+test = Calculator()
 
 
 def setup_function():
@@ -11,6 +16,7 @@ def setup_function():
 
 
 def test_case01(before_a):
+    test.add(1, 2)
     print('This is test_case01')
 
 
@@ -24,6 +30,7 @@ def test_case02():
 def test_case03(before_a):
     print('This is test_case03')
     raise Exception("This is an Exception")
+
 
 @allure.feature('中文')
 class TestClassDemo():
@@ -48,3 +55,5 @@ class TestClassDemoOther:
     def test_class_case_c(self):
         print('This is test_class_case_c')
 
+if __name__ == '__main__':
+    pytest.main(['-v','-x','test_py.py::TestClassDemoOther'])

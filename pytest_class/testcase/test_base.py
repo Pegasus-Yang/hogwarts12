@@ -6,7 +6,7 @@ import pytest
 import sys
 
 sys.path.append('..')
-from target.calculator import Calculator
+from pytest_class.calculator import Calculator
 
 
 class TestMath:
@@ -29,3 +29,13 @@ class TestMath:
         print(do_sth)
         print(self.x)
         assert result == 1
+
+@pytest.mark.parametrize('a,b',[[1,2]])
+def test_aa(do_sth, a, b):
+    print(do_sth)
+    print(a)
+    print(b)
+    print(do_sth)
+
+
+
